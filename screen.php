@@ -31,8 +31,8 @@ mysqli_close($connect);	//close the connection
 <h2>Recent Messages</h2>
 	<hr/>
 	<a href ="compose.php">Compose New Message</a>
-
-
-
+<form> 
+<input type="submit" value="Login">
+</form>
 
 </html>

@@ -36,22 +36,42 @@ else{
 
 <html>
 <head>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<title>Cheapomail</title>	
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title>Cheapomail</title>	
+	<link rel="stylesheet" type="text/css" href="cheapomail.css">
 </head>
+	
 <body>
 <h1>Cheapomail Sign Up</h1>	
-<hr/>
+<hr/><br>
 <form action='screen.php' method='post'>
-Username:<br>
-	<input type="text" name="username"><br><br>
-First Name: <br>
-	<input type="text" name="firstname"><br><br>
-Last Name: <br>
-	<input type="text" name="lastname"><br><br>
-Password:<br>
-	<input type="password" name="password"><br><br>
+	<div class="login">
+	<label for="username">Username:</label>	
+	<input name="username"
+		   id= "username"			   
+	   	   type="text"/>	
+	</div>
+<br>	
+	<div class="login">
+	<label for="firstname">First Name:</label>
+	<input name="firstname"
+		   id= "firstname"			   
+	   	   type="text"/>	
+	</div>	
+<br>
+	<div class="login">
+	<label for="lastname">Last Name:</label>
+	<input name="lastname"
+		   id= "lastname"			   
+	   	   type="text"/>	
+	</div>	
+<br>
+	<div class="login">
+	<label for="password">Password:</label>
+	<input name="password"
+		   id= "password"			   
+	   	   type="password"/>	
+	</div>	
 <?php
 	if ($error > 0){
 			print 'error';

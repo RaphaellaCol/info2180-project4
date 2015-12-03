@@ -3,15 +3,15 @@
 	
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="cheapomail.css">
 <title>Compose Message</title>	
 </head>
 
 <body>
-	<h1>Compose Message</h1>
+	<h1 class=compose>Compose Message</h1>
 	<hr/>
-	
 	<form action="screen.php" method='post'>
-	<div>
+	<div class="message">
 	<label for="subject">Subject:</label>	
 	<input
 	   		name="subject"
@@ -19,7 +19,7 @@
 	   		type="text"/>	
 	</div>	
 	<br/>	
-	<div>
+	<div class="message">
 	<label for="recipients">Recipients:</label><br>
 	<textarea
 			  name="recipients"
@@ -28,8 +28,8 @@
 			  cols="50"></textarea>	  	   	
 	</div>
 	<br>	
-	<div>
-	<label for="body">Body:</label>	
+	<div class="message">
+	<label for="body">Body:</label>
 	<br><textarea
 			  name="body"
 			  id="body"
