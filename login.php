@@ -1,38 +1,36 @@
 <?php
-	$pw = $_POST['password'];
-	$error=0;
+	include("connect.php");
 
-if (isset($_POST['firstname'])&& !empty($_POST['firstname']))
-{
-	$firstname = $_POST('firstname');
-}
-else{
-	$error +=1;
-}
-if (isset($_POST['lastname'])&& !empty($_POST['lastname']))
-{
-	$lastname = $_POST('lastname');
-}
-else{
-	$error +=1;
-}
+	$value = 0;
+	if (isset($_POST['username'])){
+	$username = $_POST['username'];	
+		$value = $value + 1;
+	}
 
-if(isset($_POST['password']) && !empty($_POST['password']) && (preg_match('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$^',$pw) == 1))
-{
-	$password = $_POST('password');
-}
-else{
-	$error+=1;
-}
-if (isset($_POST['username'])&& !empty($_POST['username']))
-{
-	$username = $_POST('username');
-}
-else{
-	$error +=1;
-}
+	if (isset($_POST['password'])){
+	$password = $_POST['password'];	
+				$value = $value + 2;
+	}
+	if ((isset($_POST['password'])) && (isset($_POST['username']))){
+		$db_query = "SELECT * FROM users WHERE username = '".$username."' AND password = '".$password."'";
+
+
+	$result = mysqli_query($connect, $db_query);
+
+	$obj = mysqli_fetch_object($result); // get the single row.
+		if ($result->num_rows == 1){
+			header('Location: screen.php');
+			//PUT SESSION AND STORE USERNAME
+		}
+
+		mysqli_close($connect);	//close the connection
+
+	}
+
 
 ?>
+
+
 
 <html>
 <head>
@@ -42,29 +40,16 @@ else{
 </head>
 	
 <body>
-<h1>Cheapomail Sign Up</h1>	
-<hr/><br>
-<form action='screen.php' method='post'>
+<h1>Cheapomail Login</h1>	
+<hr/>
+	
+<form action='login.php' method='post'>
 	<div class="login">
 	<label for="username">Username:</label>	
 	<input name="username"
 		   id= "username"			   
 	   	   type="text"/>	
 	</div>
-<br>	
-	<div class="login">
-	<label for="firstname">First Name:</label>
-	<input name="firstname"
-		   id= "firstname"			   
-	   	   type="text"/>	
-	</div>	
-<br>
-	<div class="login">
-	<label for="lastname">Last Name:</label>
-	<input name="lastname"
-		   id= "lastname"			   
-	   	   type="text"/>	
-	</div>	
 <br>
 	<div class="login">
 	<label for="password">Password:</label>
@@ -72,11 +57,6 @@ else{
 		   id= "password"			   
 	   	   type="password"/>	
 	</div>	
-<?php
-	if ($error > 0){
-			print 'error';
-		}
-?>
 <br>
 <input type="submit" value="Login">	
 </form>	

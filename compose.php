@@ -1,3 +1,32 @@
+<?php
+
+$body = isset($_POST['body']);
+$subj = isset($_POST['subject']);
+$rcp = isset($_POST['recipients']);
+
+echo $body . "<br/>";
+echo $subj . "<br/>";
+echo $rcp . "<br/>";
+
+include("connect.php"); //insert data from connect.php
+
+$query = "INSERT INTO message (id, body, subject, recipient_ids)" . "VALUES (NULL, '$body', '$subj','$rcp')";
+	
+$result = mysqli_query($connect, $query) or die (mysqli_error($connect));
+
+if ($result==1){
+	echo "You have been added";
+}
+else{
+	echo "Sorry, an error has ocurred";
+}
+		
+mysqli_close($connect);	//close the connection
+
+
+?>
+
+
 <!DOCTYPE HTML>
 <html>
 	
@@ -8,7 +37,7 @@
 </head>
 
 <body>
-	<h1 class=compose>Compose Message</h1>
+	<h1 class="compose">Compose Message</h1>
 	<hr/>
 	<form action="screen.php" method='post'>
 	<div class="message">
@@ -20,7 +49,7 @@
 	</div>	
 	<br/>	
 	<div class="message">
-	<label for="recipients">Recipients:</label><br>
+	<label for="recipients">Recipients ID:</label><br>
 	<textarea
 			  name="recipients"
 			  id="recipients"

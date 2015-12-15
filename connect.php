@@ -1,11 +1,11 @@
 <?php
 
 $host="localhost";
-$username="mailapp";
+$user="mailapp";
 $database="cheapomail";
-$password="root";
+$pword="";
 
-$connect=mysqli_connect($host, $username, $database, $password)
+$connect = mysqli_connect($host, $user, $pword, $database)
 or die(mysqli_error($connect));
 
 
