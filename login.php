@@ -1,35 +1,39 @@
 <?php
-	include("connect.php");
+
+session_start();	
 
 	$value = 0;
+	include("connect.php");
+
 	if (isset($_POST['username'])){
-	$username = $_POST['username'];	
+		$username = $_POST['username'];	
 		$value = $value + 1;
 	}
 
 	if (isset($_POST['password'])){
-	$password = $_POST['password'];	
-				$value = $value + 2;
+		$password = $_POST['password'];	
+		$value = $value + 2;
 	}
+
 	if ((isset($_POST['password'])) && (isset($_POST['username']))){
 		$db_query = "SELECT * FROM users WHERE username = '".$username."' AND password = '".$password."'";
-
-
+		
 	$result = mysqli_query($connect, $db_query);
 
 	$obj = mysqli_fetch_object($result); // get the single row.
-		if ($result->num_rows == 1){
-			header('Location: screen.php');
-			//PUT SESSION AND STORE USERNAME
-		}
-
-		mysqli_close($connect);	//close the connection
+		
+	if ($result->num_rows == 1){
+		$_SESSION['username']= $username;
+		header('Location: screen.php');
+	}
+	else{
+		echo "Account is invalid";
+	}
+		
+	mysqli_close($connect);	//close the connection
 
 	}
-
-
 ?>
-
 
 
 <html>
@@ -40,6 +44,7 @@
 </head>
 	
 <body>
+	<div id="msg">
 <h1>Cheapomail Login</h1>	
 <hr/>
 	
@@ -60,7 +65,7 @@
 <br>
 <input type="submit" value="Login">	
 </form>	
-		
+</div>		
 </body>
 
 </html>

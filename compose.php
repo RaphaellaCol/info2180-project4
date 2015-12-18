@@ -1,28 +1,38 @@
 <?php
 
-$body = isset($_POST['body']);
-$subj = isset($_POST['subject']);
-$rcp = isset($_POST['recipients']);
+if (isset($_POST['body'])){
+	$body = $_POST['body'];	
+}
+if (isset($_POST['subject'])){
+	$subject = $_POST['subject'];	
+}
+if (isset($_POST['recipients'])){
+	$rcp = $_POST['recipients'];	
+}
 
-echo $body . "<br/>";
-echo $subj . "<br/>";
-echo $rcp . "<br/>";
-
+if (isset($_POST['body']) && isset($_POST['subject']) && isset($_POST['recipients'])){
+	
 include("connect.php"); //insert data from connect.php
 
-$query = "INSERT INTO message (id, body, subject, recipient_ids)" . "VALUES (NULL, '$body', '$subj','$rcp')";
+$query = "INSERT INTO message (id, user_id, body, subject, recipient_ids)" . "VALUES (NULL, '1', '$body', '$subject','$rcp')";
+
+print_r ($query);
 	
 $result = mysqli_query($connect, $query) or die (mysqli_error($connect));
+print_r ($result);	
 
 if ($result==1){
-	echo "You have been added";
+	echo "Message sent!";
+	unset ($_POST['body']);
+	unset ($_POST['subject']);
+	unset ($_POST['recipients']);
 }
 else{
 	echo "Sorry, an error has ocurred";
 }
 		
 mysqli_close($connect);	//close the connection
-
+}
 
 ?>
 
@@ -37,6 +47,7 @@ mysqli_close($connect);	//close the connection
 </head>
 
 <body>
+	<div id="body_compose">
 	<h1 class="compose">Compose Message</h1>
 	<hr/>
 	<form action="screen.php" method='post'>
@@ -70,6 +81,6 @@ mysqli_close($connect);	//close the connection
 	<input type="submit" value="Send Message">
 		
 	</form>
-	
+	</div>
 </body>
 </html>

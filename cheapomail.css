@@ -1,5 +1,5 @@
-body{
-	background-color:beige;
+#msg{
+	background-color: #63dd8d;
 	text-align: center;
     vertical-align: middle;
     border-color: #000000;
@@ -11,6 +11,20 @@ body{
 	margin-right: 25%;
 }
 
+body{
+	background-color:#60b9ce;
+}
+#body_compose{
+	background-color: #63dd8d;
+	text-align: center;
+    vertical-align: middle;
+    border-color: #000000;
+    border-width: 2px;
+    border-style:groove;
+	
+}
+
+
 .login{
 	
 	font-family: cursive;
@@ -20,13 +34,52 @@ body{
 
 h1{
 	font-family:inherit;
-	color:darkcyan;
+	color:#0000b3;
 }
 
 .message{
 	
 	text-align:center;
 	font-family:cursive;
+	vertical-align: middle;
 	font-size: 20px;
 }
 
+#users{
+	width: 20%;
+	float: left;
+	text-align: left;
+	position: fixed;
+	margin-top: 25px;
+	margin-left: 5px;
+	background-color: #FF8957;
+	border-color: #000000;
+    border-width: 2px;
+    border-style:groove;
+	min-height: 200px;
+}
+
+#messages{
+	font-family:inherit;
+	color:#0000b3;
+	font-size: 20px;
+	width: ;
+	float: ;
+	text-align: ;
+	position: ;
+	margin-top: ;
+	margin-left: ;
+}
+
+#create_user_btn{
+border-radius: 5px solid black;
+background-color:#ffffff;
+width: inherit;	
+margin: 0 auto;
+color:#ffffff;
+font-weight: bold;
+}
+
+#create_user_btn: visited{
+	background-color: chartreuse;
+}
