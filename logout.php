@@ -7,11 +7,12 @@ session_unset(); #removes all variables in session
 
 session_destroy(); #destroys session
 
-if (!$_SESSION['username']){
+if (!isset($_SESSION['username'])){
 	echo "Logout Successful! <br />";
+	header('Location: login.php');
 }
 else{
-	echo "Logout Failed!<br />"
+	echo "Logout Failed!<br />";
 }
 
 

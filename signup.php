@@ -18,15 +18,11 @@ if (isset($_POST['password']) && !empty($_POST['password']) && (preg_match('^(?=
 	$password = $_POST['password'];	
 }
 
-
-//echo $username . "<br/>";
-//echo $fname . "<br/>";
-//echo $lname . "<br/>";	
-//echo $password . "<br/>";
 if ($password != '' && $username != '' && $fname != '' && $lname != ''){
 	
 include("connect.php"); //insert data from connect.php
 
+//insert user information into database	
 $db_query = "INSERT INTO users (id, username, firstname, lastname, password)" . "VALUES (NULL, '$username', '$fname', '$lname', '$password')";
 	
 $result = mysqli_query($connect, $db_query) or die (mysqli_error($connect));

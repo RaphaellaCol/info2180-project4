@@ -15,8 +15,6 @@ if (isset($_POST['body']) && isset($_POST['subject']) && isset($_POST['recipient
 include("connect.php"); //insert data from connect.php
 
 $query = "INSERT INTO message (id, user_id, body, subject, recipient_ids)" . "VALUES (NULL, '1', '$body', '$subject','$rcp')";
-
-print_r ($query);
 	
 $result = mysqli_query($connect, $query) or die (mysqli_error($connect));
 print_r ($result);	
