@@ -24,6 +24,7 @@ session_start();
 		
 	if ($result->num_rows == 1){
 		$_SESSION['username']= $username;
+		$_SESSION['id'] = $obj->id;
 		header('Location: screen.php');
 	}
 	else{

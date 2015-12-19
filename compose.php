@@ -1,29 +1,31 @@
 <?php
 
-if (isset($_POST['body'])){
+if (isset($_POST['body']) && $_POST['body'] != ''){
 	$body = $_POST['body'];	
 }
 if (isset($_POST['subject'])){
 	$subject = $_POST['subject'];	
 }
 if (isset($_POST['recipients'])){
-	$rcp = $_POST['recipients'];	
+	$rcp = $_POST['recipients'];
+	$r2 = explode(';', $rcp);
+	$rcp='|'. join('|',$r2);
 }
 
-if (isset($_POST['body']) && isset($_POST['subject']) && isset($_POST['recipients'])){
+if (isset($_POST['body']) && isset($_POST['subject']) && isset($_POST['recipients']) && $_POST['body'] != ''){
 	
 include("connect.php"); //insert data from connect.php
 
-$query = "INSERT INTO message (id, user_id, body, subject, recipient_ids)" . "VALUES (NULL, '1', '$body', '$subject','$rcp')";
+$query = "INSERT INTO message (id, user_id, body, subject, recipient_ids)" . "VALUES (NULL, '".$_SESSION['id']."', '$body', '$subject','$rcp')";
 	
 $result = mysqli_query($connect, $query) or die (mysqli_error($connect));
 print_r ($result);	
 
-if ($result==1){
-	echo "Message sent!";
-	unset ($_POST['body']);
-	unset ($_POST['subject']);
-	unset ($_POST['recipients']);
+if ($result == 1){
+	unset($_POST);
+	$_POST = array();
+	header('Location: screen.php');
+
 }
 else{
 	echo "Sorry, an error has ocurred";
@@ -58,12 +60,13 @@ mysqli_close($connect);	//close the connection
 	</div>	
 	<br/>	
 	<div class="message">
-	<label for="recipients">Recipients ID:</label><br>
-	<textarea
+	<label for="recipients">Recipients ID:</label>
+		<textarea
 			  name="recipients"
 			  id="recipients"
-			  rows="4"
-			  cols="50"></textarea>	  	   	
+			  rows="1"
+			  cols="50"></textarea><br/>
+	*Enter a semi-colon after each id*	
 	</div>
 	<br>	
 	<div class="message">

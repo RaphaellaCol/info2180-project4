@@ -46,43 +46,6 @@ else{
 	
 }
 
-//	$pw = isset($_POST['password']);
-//	$error=0;
-//
-//if (isset($_POST['firstname'])&& !empty($_POST['firstname']))
-//{
-//	$firstname = $_POST('firstname');
-//}
-//else{
-//	$error +=1;
-//}
-//
-//if (isset($_POST['lastname'])&& !empty($_POST['lastname']))
-//{
-//	$lastname = $_POST('lastname');
-//}
-//else{
-//	$error +=1;
-//}
-//
-//if(isset($_POST['password']) && !empty($_POST['password']) && (preg_match('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$^',$pw) == 1))
-//{
-//	$password = $_POST('password');
-//}
-//else{
-//	$error+=1;
-//	}
-//
-//if (isset($_POST['username'])&& !empty($_POST['username']))
-//{
-//	$uname = $_POST('username');
-//}
-//else{
-//	$error +=1;
-//}
-//
-//include("connect.php");
-
 ?>
 
 <html>

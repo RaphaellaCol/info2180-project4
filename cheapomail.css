@@ -5,12 +5,24 @@
     border-color: #000000;
     border-width: 2px;
     border-style:groove;
-	margin-top: 5%;
-    margin-bottom: 25%;
-	margin-left: 25%;
-	margin-right: 25%;
+	margin: 5% 25% 25% 25%;
 }
+#msg2 div p {
+    width: 80%;
+	word-wrap: break-word;
+	text-align:center;
+	margin:0 10%;
+    }
 
+#msg2{
+	background-color: #63dd8d;
+	text-align: center;
+    vertical-align: middle;
+    border-color: #000000;
+    border-width: 2px;
+    border-style:groove;
+	margin: 5% 25% 25% 25%;
+}
 body{
 	background-color:#60b9ce;
 }
@@ -21,7 +33,6 @@ body{
     border-color: #000000;
     border-width: 2px;
     border-style:groove;
-	
 }
 
 
@@ -63,12 +74,6 @@ h1{
 	font-family:inherit;
 	color:#0000b3;
 	font-size: 20px;
-	width: ;
-	float: ;
-	text-align: ;
-	position: ;
-	margin-top: ;
-	margin-left: ;
 }
 
 #create_user_btn{
@@ -93,9 +98,47 @@ border: 3px solid #000000;
 width: inherit;	
 position:absolute;
 background-color:#FF8957;
-top:0;
-right:0;
+top:20;
+right:100;
 font-size: 20px;
 padding:3px;
 font-weight: bold;
 }
+
+thead{
+	font-weight: bold;
+}
+#messagest tbody tr:hover{
+	background-color: #4477ee;	
+}
+.notread{
+ font-weight: bold;
+}
+#messagest{
+ width: 100%;
+ text-align: center;
+ margin-bottom:100px;
+}
+
+#messagest thead tr td{
+ width: 25%;
+ text-align: center;
+}
+
+#users table{
+ width: 100%;
+ text-align: center;
+}
+
+
+.notread{
+ font-weight: bold;
+}
+
+.bodylist p {
+    text-overflow: ellipsis; 
+    width: 10em; 
+    white-space: nowrap; 
+    overflow:hidden; 
+    }
+ 
